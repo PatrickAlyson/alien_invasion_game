@@ -10,7 +10,7 @@ from button import Button
 from button_difficulty import ButtonDiff
 from scoreboard import Scoreboard
 import json
-#page 301
+
 class AlienInvasion:
 	"""Overall class to manage game assets and behavior"""
 
