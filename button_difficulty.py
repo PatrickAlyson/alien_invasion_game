@@ -1,33 +1,33 @@
 import pygame.font
 
+
 class ButtonDiff:
 
-	def __init__(self, ai_game, msg, pos):
-		"""Initialize button atribute"""
-		self.screen = ai_game.screen
+    def __init__(self, ai_game, msg, pos):
+        """Initialize button atribute"""
+        self.screen = ai_game.screen
 
-		# Set dimensions and properties of the button
-		self.width, self.height = 200, 50
-		self.button_color = (0, 255, 0)
-		self.text_color = (255, 255, 255)
-		self.font = pygame.font.SysFont(None, 48)
+        # Set dimensions and properties of the button
+        self.width, self.height = 200, 50
+        self.button_color = (0, 255, 0)
+        self.text_color = (255, 255, 255)
+        self.font = pygame.font.SysFont(None, 48)
 
-		# Build the button's rect object and center it
-		self.rect = pygame.Rect(0, 0, self.width, self. height)
-		self.rect.center = pos
+        # Build the button's rect object and center it
+        self.rect = pygame.Rect(0, 0, self.width, self. height)
+        self.rect.center = pos
 
-		# The button msg need to be prepped only once
-		self._prep_msg(msg)
+        # The button msg need to be prepped only once
+        self._prep_msg(msg)
 
+    def _prep_msg(self, msg):
+        """Turn msg into a rendered image and center text on the button"""
+        self.msg_image = self.font.render(msg, True, self.text_color,
+                                          self.button_color)
+        self.msg_image_rect = self.msg_image.get_rect()
+        self.msg_image_rect.center = self.rect.center
 
-	def _prep_msg(self, msg):
-		"""Turn msg into a rendered image and center text on the button"""
-		self.msg_image = self.font.render(msg, True, self.text_color,	
-			self.button_color)
-		self.msg_image_rect = self.msg_image.get_rect()
-		self.msg_image_rect.center = self.rect.center
-
-	def draw_button(self):
-		# Draw blanck button and then draw msg
-		self.screen.fill(self.button_color, self.rect)
-		self.screen.blit(self.msg_image, self.msg_image_rect)	
+    def draw_button(self):
+        # Draw blanck button and then draw msg
+        self.screen.fill(self.button_color, self.rect)
+        self.screen.blit(self.msg_image, self.msg_image_rect)
